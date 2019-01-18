@@ -20,26 +20,15 @@ public class CategoriaResource {
     private CategoriaService service;
 
     @GetMapping
-    public List<Categoria> listar() {
+    public ResponseEntity<?> listar() {
+        List<Categoria> categorias = service.findAll();
 
-        Categoria cat1 = new Categoria();
-        cat1.setId(1L);
-        cat1.setNome("Informática");
-
-        Categoria cat2 = new Categoria();
-        cat2.setId(2L);
-        cat2.setNome("Escritório");
-
-        List<Categoria> categorias = new ArrayList<>();
-        categorias.add(cat1);
-        categorias.add(cat2);
-
-        return categorias;
+        return ResponseEntity.ok().body(categorias);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
-        Categoria categoria = service.buscar(id);
+        Categoria categoria = service.find(id);
 
         return ResponseEntity.ok().body(categoria);
     }
