@@ -13,6 +13,8 @@ import java.util.List;
 @Entity
 public class Categoria implements Serializable {
 
+    private static final long serialVersionUID = 5162337763994022974L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
