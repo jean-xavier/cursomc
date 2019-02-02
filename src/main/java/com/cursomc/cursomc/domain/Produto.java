@@ -6,7 +6,9 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -30,11 +32,25 @@ public class Produto implements Serializable {
     )
     private List<Categoria> categorias = new ArrayList<>();
 
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itens = new HashSet<>();
+
+
     public Produto() {
     }
 
     public Produto(String nome, Double preco) {
         this.nome = nome;
         this.preco = preco;
+    }
+
+    public List<Pedido> getPedidos() {
+        List<Pedido> pedidos = new ArrayList<>();
+
+        for (ItemPedido pedido : itens ) {
+            pedidos.add(pedido.getPedido());
+        }
+
+        return pedidos;
     }
 }
