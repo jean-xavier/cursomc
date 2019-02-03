@@ -1,6 +1,7 @@
 package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public abstract class Pagamento implements Serializable {
     private Long id;
     private Integer estadoPagamento;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
