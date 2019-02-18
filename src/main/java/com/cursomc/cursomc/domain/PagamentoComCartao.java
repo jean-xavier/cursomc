@@ -1,23 +1,29 @@
 package com.cursomc.cursomc.domain;
 
-import com.cursomc.cursomc.domain.enums.EstadoPagamento;
-import lombok.Data;
-
 import javax.persistence.Entity;
 
-@Data
+import com.cursomc.cursomc.domain.enums.EstadoPagamento;
+
 @Entity
 public class PagamentoComCartao extends Pagamento {
 
-    private static final long serialVersionUID = 5228453066040978545L;
+	private static final long serialVersionUID = 5228453066040978545L;
 
-    private Integer numeroDeParcelas;
+	private Integer numeroDeParcelas;
 
-    public PagamentoComCartao() {
-    }
+	public PagamentoComCartao() {
+	}
 
-    public PagamentoComCartao(EstadoPagamento estadoPagamento, Pedido pedido, Integer numeroDeParcelas) {
-        super(estadoPagamento, pedido);
-        this.numeroDeParcelas = numeroDeParcelas;
-    }
+	public PagamentoComCartao(EstadoPagamento estadoPagamento, Pedido pedido, Integer numeroDeParcelas) {
+		super(estadoPagamento, pedido);
+		this.numeroDeParcelas = numeroDeParcelas;
+	}
+
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
+	}
+
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
+	}
 }
